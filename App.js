@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
 } from 'react-native';
+import {heapIdentify} from './src/heap';
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
         <TextInput>Password</TextInput>
       </View>
       <View style={styles.lcontainer}>
-        <Button title="LOGIN" />
+        <Button title="LOGIN" onPress={heapIdentify('1234568')} />
       </View>
       <View style={styles.rcontainer}>
         <Button title="REGISTER" />
