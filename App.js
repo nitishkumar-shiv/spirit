@@ -7,26 +7,35 @@ import {
   Image,
   TextInput,
   Button,
+  ScrollView,
 } from 'react-native';
-import {heapIdentify} from './src/heap';
 
 const App = () => {
   return (
     <SafeAreaView style={styles.Container}>
-      <Image style={styles.homeImage} source={require('./src/images/p1.jpg')} />
-      <View style={styles.wellcometext}>
-        <Text>WELLCOME TO THE WORLD OF SPIRIT</Text>
-      </View>
-      <View style={styles.epcontainer}>
-        <TextInput>Email</TextInput>
-        <TextInput>Password</TextInput>
-      </View>
-      <View style={styles.lcontainer}>
-        <Button title="LOGIN" onPress={heapIdentify('1234568')} />
-      </View>
-      <View style={styles.rcontainer}>
-        <Button title="REGISTER" />
-      </View>
+      <ScrollView>
+        <Image
+          style={styles.homeImage}
+          source={require('./src/images/p1.jpg')}
+        />
+        <View style={styles.wellcometextContainer}>
+          <Text style={styles.wellcometext}>
+            WELLCOME TO THE WORLD OF SPIRIT
+          </Text>
+        </View>
+        <View style={styles.econtainer}>
+          <TextInput style={styles.ep}>Email</TextInput>
+        </View>
+        <View style={styles.pcontainer}>
+          <TextInput style={styles.ep}>Password</TextInput>
+        </View>
+        <View style={styles.lcontainer}>
+          <Button title="LOGIN" />
+        </View>
+        <View style={styles.rcontainer}>
+          <Button title="REGISTER" />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -40,9 +49,17 @@ const styles = StyleSheet.create({
     height: 300,
     width: 400,
   },
-  epcontainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
+  econtainer: {
+    paddingLeft: 20,
+    borderWidth: 1,
+  },
+  pcontainer: {
+    paddingLeft: 20,
+    borderWidth: 1,
+  },
+  ep: {
+    fontSize: 20,
+    color: '#6495ED',
   },
   lcontainer: {
     padding: 20,
@@ -50,9 +67,14 @@ const styles = StyleSheet.create({
   rcontainer: {
     padding: 20,
   },
-  wellcometext: {
+  wellcometextContainer: {
     alignItems: 'center',
     paddingVertical: 30,
+  },
+  wellcometext: {
+    fontSize: 20,
+    color: '#7B241C',
+    fontFamily: 'fangsong',
   },
 });
 
