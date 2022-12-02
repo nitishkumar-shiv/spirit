@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "384023261767",
+    "project_id": "spirit-e0ec8",
+    "storage_bucket": "spirit-e0ec8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384023261767:android:8f807255c76fa62a183762",
+        "android_client_info": {
+          "package_name": "com.spirit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384023261767-jako9nglc4tsp8pmhecru0kg5ccvcgs5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBqm7TWPylvocDnXhm1dp6sQiiaXit0ss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384023261767-jako9nglc4tsp8pmhecru0kg5ccvcgs5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

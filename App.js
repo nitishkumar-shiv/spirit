@@ -8,9 +8,14 @@ import {
   TextInput,
   Button,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
+import {UserLogin, UserRegister} from './src/Authentication';
 
 const App = () => {
+  const [email, onChangeEmail] = React.useState(null);
+  const [password, onChangePassword] = React.useState(null);
+
   return (
     <SafeAreaView style={styles.Container}>
       <ScrollView>
@@ -24,16 +29,29 @@ const App = () => {
           </Text>
         </View>
         <View style={styles.econtainer}>
-          <TextInput style={styles.ep}>Email</TextInput>
+          <TextInput
+            style={styles.ep}
+            placeholder="Email"
+            value={email}
+            onChangeText={onChangeEmail}
+          />
         </View>
         <View style={styles.pcontainer}>
-          <TextInput style={styles.ep}>Password</TextInput>
+          <TextInput
+            style={styles.ep}
+            placeholder="Password"
+            value={password}
+            onChangeText={onChangePassword}
+          />
         </View>
         <View style={styles.lcontainer}>
-          <Button title="LOGIN" />
+          <Button title="LOGIN" onPress={() => UserLogin(email, password)} />
         </View>
         <View style={styles.rcontainer}>
-          <Button title="REGISTER" />
+          <Button
+            title="REGISTER"
+            onPress={() => UserRegister(email, password)}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
