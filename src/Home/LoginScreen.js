@@ -10,12 +10,12 @@ import {
   ScrollView,
 } from 'react-native';
 import {UserLogin, UserRegister} from '../Authentication';
-//import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 export const LoginScreen = () => {
   const [email, onChangeEmail] = React.useState(null);
   const [password, onChangePassword] = React.useState(null);
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.Container}>
@@ -43,7 +43,7 @@ export const LoginScreen = () => {
           />
         </View>
         <View style={styles.lcontainer}>
-          <Button title="LOGIN" onPress={() => UserLogin(email, password)} />
+          <Button title="LOGIN" onPress={() => navigation.navigate('Spirit')} />
         </View>
         <View style={styles.rcontainer}>
           <Button
