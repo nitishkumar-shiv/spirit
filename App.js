@@ -1,6 +1,6 @@
 import React from 'react';
 import {LoginScreen} from './src/Home/LoginScreen';
-import {Spirit} from './src/Home/Spirit';
+import {UploadScreen} from './src/Home/Spirit';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -24,7 +24,7 @@ const App = () => {
             },
           }}
         />
-        <Stack.Screen name="Spirit" component={Spirit} />
+        <Stack.Screen name="Spirit" component={UploadScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
