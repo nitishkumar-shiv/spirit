@@ -9,18 +9,17 @@ import {
   Alert,
   Image,
 } from 'react-native';
-import * as ImagePicker from 'react-native-image-picker';
 import MultipleImagePicker from '@baronha/react-native-multiple-image-picker';
-
-import {storage} from '@react-native-firebase/storage';
+import {firebase} from '@react-native-firebase/storage';
 import * as Progress from 'react-native-progress';
 
 export const UploadScreen = () => {
-  const [image, setImage] = useState(null);
+  let image = [];
   const [uploading, setUploading] = useState(false);
   const [transferred, setTransferred] = useState(0);
 
   const selectImage = async () => {
+    image = [];
     const options = {
       doneTitle: 'NEXT->',
       maxSelectedAssets: 30,
@@ -29,26 +28,20 @@ export const UploadScreen = () => {
       //storageOptions: {skipBackup: true, path: 'images'},
     };
     const response = await MultipleImagePicker.openPicker(options);
-    if (response.didCancel) {
-      console.log('User cancelled image picker');
-    } else if (response.error) {
-      console.log('ImagePicker Error: ', response.error);
-    } else if (response.customButton) {
-      console.log('User tapped custom button: ', response.customButton);
-    } else {
-      const source = {uri: response.assets[0].uri};
-      console.log(source);
-      setImage(source);
+    for (let i = 0; i < response.length; i++) {
+      image.push(response[i]);
     }
   };
 
   const uploadImage = async () => {
-    const {uri} = image;
+    const uri = image[0].realPath;
+    console.log('uuuuuuuuuuuuuuuuuuuuuuuu', uri);
     const filename = uri.substring(uri.lastIndexOf('/') + 1);
     const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
     setUploading(true);
     setTransferred(0);
-    const task = storage().ref(filename).putFile(uploadUri);
+    const task = firebase.storage().ref(filename).putFile(uploadUri);
+    console.log(task);
     // set progress state
     task.on('state_changed', snapshot => {
       setTransferred(
@@ -65,13 +58,13 @@ export const UploadScreen = () => {
       'Photo uploaded!',
       'Your photo has been uploaded to Firebase Cloud Storage!',
     );
-    setImage(null);
+    image = [];
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.selectButton} onPress={selectImage}>
-        <Text style={styles.buttonText}>Pick an image</Text>
+        <Text style={styles.buttonText}>Select your image</Text>
       </TouchableOpacity>
       <View style={styles.imageContainer}>
         {image !== null ? (
